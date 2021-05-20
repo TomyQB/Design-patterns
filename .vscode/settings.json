@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "Creational/Singleton",
+        "Creational/Builder",
+        ""
+    ]
+}

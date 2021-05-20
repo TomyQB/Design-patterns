@@ -1,8 +1,15 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import Creational.Factory.DificultEnemiesFactory;
 import Creational.Factory.EasyEnemiesFactory;
 import Creational.Factory.Enemy;
 import Creational.Prototype.Movie;
 import Creational.Prototype.prototypeFactory;
+import Structural.Adapter.Adapter;
+import Structural.Adapter.Employee;
+import Structural.Adapter.EmployeeBDA;
+import Structural.Adapter.EmployeeJSON;
 
 public class main {
 
@@ -11,6 +18,8 @@ public class main {
         builderTest();
         prototypeTest();
         factoryTest();
+
+        adapterTest();
     }
 
     private static void singletonTest() {
@@ -59,6 +68,20 @@ public class main {
         EasyEnemiesFactory easytEnemiesFactory = new EasyEnemiesFactory();
         Enemy easyEnemy = easytEnemiesFactory.createEnemy();
         easyEnemy.damagePerSecond();
+    }
+
+    private static void adapterTest() {
+        System.out.println("--------------------------------------ADAPTER--------------------------------------");
+        List<Employee> employees = new ArrayList<>();
+
+        EmployeeBDA employeeBDA = new EmployeeBDA("11111111A", "Pedro", "Martínez", "123@gmail.com");
+        employees.add(employeeBDA);
+        
+        EmployeeJSON employeeJSON = new EmployeeJSON("22222222B", "Juan", "Pérez", "456@gmail.com");
+        employees.add(new Adapter(employeeJSON));
+
+        System.out.println(employees.get(0).toString());
+        System.out.println(employees.get(1).toString());
     }
     
 }

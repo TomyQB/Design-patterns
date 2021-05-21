@@ -10,6 +10,8 @@ import Structural.Adapter.Adapter;
 import Structural.Adapter.Employee;
 import Structural.Adapter.EmployeeBDA;
 import Structural.Adapter.EmployeeJSON;
+import Structural.Composite.Menu;
+import Structural.Composite.MenuItem;
 
 public class main {
 
@@ -20,6 +22,7 @@ public class main {
         factoryTest();
 
         adapterTest();
+        compositeTest();
     }
 
     private static void singletonTest() {
@@ -82,6 +85,36 @@ public class main {
 
         System.out.println(employees.get(0).toString());
         System.out.println(employees.get(1).toString());
+    }
+
+    private static void compositeTest() {
+
+        /* In this patter we can see how we can create a menus with tree-shaped, we can 
+            differentiate levels and sublevels. In this example i'm creating a tree with this shape
+            
+                                                MAIN
+                                                 /\
+                                                /  \
+                                               /    \
+                                           SAFETY  CLAIMS
+                                                      |
+                                                      |
+                                               PERSONAL CLAIMS
+        */
+
+        System.out.println("--------------------------------------COMPOSITE--------------------------------------");
+        Menu mainMenu = new Menu("Main", "/main");
+
+        MenuItem safetyMenuItem = new MenuItem("Safety", "/safety");
+        mainMenu.add(safetyMenuItem);
+        
+        Menu claimsSubMenu = new Menu("Claims", "/claims");
+        mainMenu.add(claimsSubMenu);
+        
+        MenuItem personalClaimsMenu = new MenuItem("Personal Claims", "/personalClaims");
+        claimsSubMenu.add(personalClaimsMenu);
+
+        System.out.println(mainMenu.toString());
     }
     
 }

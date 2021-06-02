@@ -12,6 +12,7 @@ import Structural.Adapter.EmployeeBDA;
 import Structural.Adapter.EmployeeJSON;
 import Structural.Composite.Menu;
 import Structural.Composite.MenuItem;
+import Structural.Decorator.Client;
 
 public class main {
 
@@ -23,6 +24,7 @@ public class main {
 
         adapterTest();
         compositeTest();
+        decoratorTest();
     }
 
     private static void singletonTest() {
@@ -115,6 +117,13 @@ public class main {
         claimsSubMenu.add(personalClaimsMenu);
 
         System.out.println(mainMenu.toString());
+    }
+
+    private static void decoratorTest() {
+        System.out.println("--------------------------------------DECORATOR--------------------------------------");
+
+        Client client = new Client();
+        client.makeShipment();
     }
     
 }

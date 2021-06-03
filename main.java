@@ -13,6 +13,7 @@ import Structural.Adapter.EmployeeJSON;
 import Structural.Composite.Menu;
 import Structural.Composite.MenuItem;
 import Structural.Decorator.Client;
+import Structural.Facade.GameFacade;
 
 public class main {
 
@@ -25,6 +26,7 @@ public class main {
         adapterTest();
         compositeTest();
         decoratorTest();
+        facadeTest();
     }
 
     private static void singletonTest() {
@@ -124,6 +126,16 @@ public class main {
 
         Client client = new Client();
         client.makeShipment();
+    }
+
+    private static void facadeTest() {
+        System.out.println("--------------------------------------FACADE--------------------------------------");
+
+        GameFacade game = new GameFacade("facadeGame@gmail.com", "123123");
+
+        game.useCoins(70);
+        game.earnedCoins(20);
+        game.useCoins(70);
     }
     
 }

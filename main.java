@@ -51,6 +51,7 @@ public class main {
         System.out.println(lunch.getBread());
         System.out.println(lunch.getCondiments());
         System.out.println(lunch.getMeat());
+
     }
 
     private static void prototypeTest() {

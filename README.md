@@ -2,7 +2,7 @@
 
 ## Descripción del Proyecto
 
-Este proyecto es una aplicación de gestión de precios que permite consultar los precios de productos en función de diferentes criterios como el `productId`, `brandId` y una fecha específica. La aplicación está construida utilizando **Java**, **Spring Boot** y **Maven**.
+Este proyecto es una aplicación de gestión de precios que permite consultar el precio que debe pagar un cliente de distintos productos en función de diferentes criterios como el `productId`, `brandId` y una fecha específica. La aplicación está construida utilizando **Java**, **Spring Boot** y **Maven**.
 
 ## Arquitectura Hexagonal
 
@@ -14,21 +14,38 @@ La arquitectura hexagonal, también conocida como arquitectura de puertos y adap
 
 - **Independencia de la tecnología**: Permite cambiar las tecnologías externas sin afectar la lógica de negocio.
 - **Facilidad de pruebas**: Facilita la creación de pruebas unitarias y de integración.
-- **Mantenibilidad**: Mejora la mantenibilidad del código al separar las preocupaciones.
+- **Mantenibilidad**: Mejora la mantenibilidad del código al tener mayor desacoplamiento.
 
 ### Aplicación de la Arquitectura Hexagonal en este Proyecto
 
-En este proyecto, la arquitectura hexagonal se ha aplicado de la siguiente manera:
+Es cierto que es una arquitectura compleja para un ejercicio tan sencillo, tanto es así que es más compleja la arquitectura que el funcionamiento del servicio, pero he decidido hacer un ejemplo con esta estructura para reflejar, muy por encima, algunos aspectos de los principios SOLID como son:
+- **Single Responsability**: Cada capa se encarga de una responsabilidad única facilitando el mantenimiento del código.
+- **Open/Closed Principle**: Para añadir una nueva funcionalidad se puede extender de los casos de uso o crear nuevos adaptadores sin necesdad de modificar el código existente.
+- **Liskov's Substitution Principle**: Facilita la sustitución de servicios externos ya que se encuentran en la capa más externa.
+- **Interface Segregation**: Tenemos interfaces sencillas que facilitan la implementación de adaptadores.
+- **Dependency Inversion**: Las capas internas no dependen de las externas en la jerarquía domain -> application -> infrastructure.
 
-- **Core (Núcleo)**: Contiene la lógica de negocio y las entidades principales.
-- **Adapters (Adaptadores)**: Incluyen los controladores REST, repositorios y otros componentes que interactúan con el mundo exterior.
-- **Ports (Puertos)**: Interfaces que definen los contratos entre el núcleo y los adaptadores.
+## Arrancar el Proyecto
 
-## Estructura del Proyecto
+Para arrancar el proyecto, sigue los siguientes pasos:
 
-- `src/main/java/com/inditex/inditex_test/core`: Contiene la lógica de negocio y las entidades.
-- `src/main/java/com/inditex/inditex_test/adapters`: Contiene los controladores REST y los repositorios.
-- `src/main/java/com/inditex/inditex_test/ports`: Contiene las interfaces que definen los contratos.
+1. **Clonar el repositorio**:
+    ```sh
+    git clone <URL_DEL_REPOSITORIO>
+    cd <NOMBRE_DEL_PROYECTO>
+    ```
+
+2. **Compilar el proyecto con Maven**:
+    ```sh
+    mvn clean install
+    ```
+
+3. **Ejecutar la aplicación**:
+    ```sh
+    mvn spring-boot:run
+    ```
+
+4. **Verificar que la aplicación está corriendo**: La aplicación estará disponible en `http://localhost:8080`.
 
 ## Ejecución de Tests
 
@@ -42,24 +59,10 @@ Para ejecutar los tests del proyecto, sigue los siguientes pasos:
 
 2. **Ejecutar los tests con Maven**:
     ```sh
-    mvn test
+    mvn -Dtest=PriceControllerIT test
     ```
 
 3. **Verificar los resultados**: Los resultados de los tests se mostrarán en la consola.
-
-## Ejecución de Tests Específicos
-
-Para ejecutar tests específicos, puedes utilizar las siguientes opciones de Maven:
-
-- **Ejecutar un test específico**:
-    ```sh
-    mvn -Dtest=NombreDelTest test
-    ```
-
-- **Ejecutar tests con un patrón específico**:
-    ```sh
-    mvn -Dtest=NombreDelTest* test
-    ```
 
 ## Conclusión
 
